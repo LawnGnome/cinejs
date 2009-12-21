@@ -57,7 +57,7 @@ cinejs.filters.BrightnessContrast.prototype.processFrame = function (frame) {
  */
 cinejs.filters.BrightnessContrast.prototype.processSubpixel = function (subpixel) {
 	// Contrast adjustment.
-	if (this.contrast != 1) {
+	if (this.contrast !== 1) {
 		subpixel -= 128;
 		subpixel *= this.contrast;
 		subpixel += 128;
