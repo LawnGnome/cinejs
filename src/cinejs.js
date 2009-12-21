@@ -21,4 +21,16 @@
 
 var cinejs = {};
 
+
+// JSLint specific settings follow.
+
+/* jslint browser: true, devel: true, newcap: true, nomen: true, sub: false,
+ * white: true */
+
+/* Elements we use that are defined by HTML5 compliant browsers that JSLint
+ * doesn't currently know about. */
+
+/*global HTMLVideoElement: false */
+
+
 // vim: set cin noet ts=8 sw=8:
