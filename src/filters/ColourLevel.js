@@ -41,9 +41,9 @@ cinejs.filters.ColourLevel = function (red, green, blue) {
  */
 cinejs.filters.ColourLevel.prototype.processFrame = function (frame) {
 	for (var i = 0; i < frame.data.length; i += 4) {
-		frame.data[i + 0] *= this.red;
-		frame.data[i + 1] *= this.green;
-		frame.data[i + 2] *= this.blue;
+		frame.data[i + 0] = Math.min(frame.data[i + 0] * this.red, 255);
+		frame.data[i + 1] = Math.min(frame.data[i + 1] * this.green, 255);
+		frame.data[i + 2] = Math.min(frame.data[i + 2] * this.blue, 255);
 	}
 };
 
