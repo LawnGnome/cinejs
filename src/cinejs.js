@@ -19,18 +19,22 @@
  * IN THE SOFTWARE.
  */
 
+
+/**
+ * @namespace Global namespace for all CineJS related objects.
+ */
 var cinejs = {};
 
 
 // JSLint specific settings follow.
 
-/* jslint browser: true, devel: true, newcap: true, nomen: true, sub: false,
- * white: true */
+/*jslint browser: true, devel: true, onevar: false, newcap: true, nomen: true,
+  sub: false, white: true */
 
 /* Elements we use that are defined by HTML5 compliant browsers that JSLint
  * doesn't currently know about. */
 
-/*global HTMLVideoElement: false */
+/*global HTMLCanvasElement: false, HTMLVideoElement: false, window: false */
 
 
 // vim: set cin noet ts=8 sw=8:
