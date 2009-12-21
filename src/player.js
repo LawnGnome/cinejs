@@ -24,6 +24,7 @@
  * Creates a new Player object.
  *
  * @class Represents a chain of elements that result in a video being played.
+ * @param {object} options Options to be set within the player.
  */
 cinejs.Player = function (options) {
 	// Initialise the filter chain.
@@ -162,11 +163,14 @@ cinejs.Player.prototype.play = function () {
 
 	// We also need an intermediate canvas to do our processing on.
 	var intermediate = this.createIntermediateCanvas();
+	if (!intermediate instanceof HTMLCanvasElement) {
+		throw "Intermediate canvas is not a canvas";
+	}
 
 	var self = this;
 	video.addEventListener("play", function () {
 		self.renderFrame(video, intermediate, self.options.destination);
-	});
+	}, false);
 
 	video.play();
 };
@@ -181,11 +185,6 @@ cinejs.Player.prototype.play = function () {
  * @param {HTMLCanvasElement} destination The destination canvas.
  */
 cinejs.Player.prototype.renderFrame = function (video, intermediate, destination) {
-	// If the video's not playing, we have nothing to do.
-	if (video.paused || video.ended) {
-		return;
-	}
-
 	if (this.filters.length === 0) {
 		/* Shortcut if we have no filters defined: just splat the data
 		 * straight to the destination. */
@@ -210,13 +209,18 @@ cinejs.Player.prototype.renderFrame = function (video, intermediate, destination
 
 		// Finally, put the munged frame to the destination canvas.
 		destinationContext.putImageData(imageData, 0, 0);
+
+		imageData = null;
 	}
 
-	// Make sure we're called again after the right delay.
-	var self = this;
-	window.setTimeout(function () {
-		self.renderFrame(video, intermediate, destination);
-	}, this.options.frameDelay);
+	/* Make sure we're called again after the right delay, unless the video
+	 * has already been stopped. */
+	if (!(video.paused || video.ended)) {
+		var self = this;
+		window.setTimeout(function () {
+			self.renderFrame(video, intermediate, destination);
+		}, this.options.frameDelay);
+	}
 };
 
 // vim: set cin noet ts=8 sw=8:

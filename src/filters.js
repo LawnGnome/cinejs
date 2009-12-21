@@ -21,20 +21,26 @@
 
 
 /**
- * @namespace Global namespace for all CineJS related objects.
+ * @namespace Encapsulates the various filters provided with CineJS.
  */
-var cinejs = {};
+cinejs.filters = {};
 
 
-// JSLint specific settings follow.
+cinejs.filters.ColourLevel = function (red, green, blue) {
+	this.red = red;
+	this.green = green;
+	this.blue = blue;
+};
 
-/*jslint browser: true, devel: true, onevar: false, newcap: true, nomen: true,
-  plusplus: false, sub: false, white: true */
+cinejs.filters.ColourLevel.prototype.processFrame = function (frame) {
+	for (var i = 0; i < frame.data.length; i += 4) {
+		frame.data[i + 0] *= this.red;
+		frame.data[i + 1] *= this.green;
+		frame.data[i + 2] *= this.blue;
+	}
+};
 
-/* Elements we use that are defined by HTML5 compliant browsers that JSLint
- * doesn't currently know about. */
-
-/*global HTMLCanvasElement: false, HTMLVideoElement: false, window: false */
+cinejs.filters.ColorLevel = cinejs.filters.ColourLevel;
 
 
 // vim: set cin noet ts=8 sw=8:
