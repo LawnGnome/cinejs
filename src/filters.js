@@ -26,12 +26,25 @@
 cinejs.filters = {};
 
 
+/**
+ * Constructs a colour level filter.
+ *
+ * @class A very basic colour level filter.
+ * @param {number} red The multiplier for the red channel.
+ * @param {number} green The multiplier for the green channel.
+ * @param {number} blue The multiplier for the blue channel.
+ */
 cinejs.filters.ColourLevel = function (red, green, blue) {
 	this.red = red;
 	this.green = green;
 	this.blue = blue;
 };
 
+/**
+ * The processing function for the colour level filter.
+ *
+ * @param {ImageData} frame
+ */
 cinejs.filters.ColourLevel.prototype.processFrame = function (frame) {
 	for (var i = 0; i < frame.data.length; i += 4) {
 		frame.data[i + 0] *= this.red;
@@ -40,6 +53,7 @@ cinejs.filters.ColourLevel.prototype.processFrame = function (frame) {
 	}
 };
 
+// This one's for my vowel deprived American friends.
 cinejs.filters.ColorLevel = cinejs.filters.ColourLevel;
 
 
