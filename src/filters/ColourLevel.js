@@ -21,12 +21,6 @@
 
 
 /**
- * @namespace Encapsulates the various filters provided with CineJS.
- */
-cinejs.filters = {};
-
-
-/**
  * Constructs a colour level filter.
  *
  * @class A very basic colour level filter.

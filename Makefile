@@ -12,7 +12,7 @@ lint:	dist/cine.js
 dist:
 	test -d dist || mkdir dist
 
-dist/cine.js:	src/cinejs.js src/player.js src/filters.js | dist
+dist/cine.js:	src/cinejs.js src/Player.js src/filters/ColourLevel.js | dist
 	cat $^ > $@
 
 dist/cine.js.gz:	dist/cine.js

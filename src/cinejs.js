@@ -26,6 +26,12 @@
 var cinejs = {};
 
 
+/**
+ * @namespace Encapsulates the various filters provided with CineJS.
+ */
+cinejs.filters = {};
+
+
 // JSLint specific settings follow.
 
 /*jslint browser: true, devel: true, onevar: false, newcap: true, nomen: true,
