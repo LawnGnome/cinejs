@@ -26,7 +26,7 @@ window.onload = function () {
 		this.realRender(video, intermediate, destination);
 	};
 
-	player.filters.push(new cinejs.filters.ColourLevel(1.0, 0.0, 0.0));
+	player.filters.push(new cinejs.filters.ColourLevel(5.0, 0.0, 0.0));
 
 	document.getElementById("play").addEventListener("click", function () {
 		frameCount = 0;
