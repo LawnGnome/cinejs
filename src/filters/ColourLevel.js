@@ -38,8 +38,9 @@ cinejs.filters.ColourLevel = function (red, green, blue) {
  * The processing function for the colour level filter.
  *
  * @param {ImageData} frame
+ * @param {HTMLCanvasElement} canvas
  */
-cinejs.filters.ColourLevel.prototype.processFrame = function (frame) {
+cinejs.filters.ColourLevel.prototype.processFrame = function (frame, canvas) {
 	for (var i = 0; i < frame.data.length; i += 4) {
 		frame.data[i + 0] = Math.min(frame.data[i + 0] * this.red, 255);
 		frame.data[i + 1] = Math.min(frame.data[i + 1] * this.green, 255);
