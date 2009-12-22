@@ -51,16 +51,8 @@ cinejs.Player = function (options) {
  */
 cinejs.Player.prototype.check = function () {
 	// Check for a valid source.
-	if (typeof this.options.source === "undefined") {
-		throw "A source element or URI must be provided";
-	}
-	else if (typeof this.options.source === "object") {
-		if (!(this.options.source instanceof String || this.options.source instanceof HTMLVideoElement)) {
-			throw "The source option must be a string or video element";
-		}
-	}
-	else if (typeof this.options.source !== "string") {
-		throw "The source option must be a string or video element";
+	if (!this.options.source instanceof HTMLVideoElement) {
+		throw "The source option must be a video element";
 	}
 
 	// Check for a valid destination element.
@@ -115,36 +107,6 @@ cinejs.Player.prototype.createIntermediateCanvas = function () {
 };
 
 /**
- * Creates a hidden video element for use while playing. This may be overridden
- * should the defaults (append to the end of the document; set the style to
- * display: none) not be acceptable.
- *
- * @param {string} uri The URI to set the element source to.
- * @return {HTMLVideoElement}
- */
-cinejs.Player.prototype.createVideoElement = function (uri) {
-	var video = document.createElement("video");
-
-	/* There's no need to autoplay, since we're going to start playback in
-	 * play() anyway. */
-	video.autoplay = false;
-
-	video.autobuffer = true;
-	video.src = uri;
-	video.style.display = "none";
-
-	/* Theoretically, we could set the width and height of the video
-	 * element here. According to the HTML5 draft spec, though,
-	 * canvas.drawImage() should ignore those regardless, so we'll leave it
-	 * be for now -- the default should be the native size of the video,
-	 * which will get rid of any unnecessary scaling overhead. */
-	
-	document.body.appendChild(video);
-
-	return video;
-};
-
-/**
  * Starts playback of the processed video.
  *
  * @throws {string} Throws anything check() can throw.
@@ -152,27 +114,18 @@ cinejs.Player.prototype.createVideoElement = function (uri) {
 cinejs.Player.prototype.play = function () {
 	this.check();
 
-	// Create a video element, should we need one.
-	var video;
-	if (typeof this.options.source === "object" && this.options.source instanceof HTMLVideoElement) {
-		video = this.options.source;
-	}
-	else {
-		video = this.createVideoElement(this.options.source);
-	}
-
-	// We also need an intermediate canvas to do our processing on.
+	// We need an intermediate canvas to do our processing on.
 	var intermediate = this.createIntermediateCanvas();
 	if (!intermediate instanceof HTMLCanvasElement) {
 		throw "Intermediate canvas is not a canvas";
 	}
 
 	var self = this;
-	video.addEventListener("play", function () {
-		self.renderFrame(video, intermediate, self.options.destination);
+	this.options.source.addEventListener("play", function () {
+		self.renderFrame(self.options.source, intermediate, self.options.destination);
 	}, false);
 
-	video.play();
+	this.options.source.play();
 };
 
 /**
