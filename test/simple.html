@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Simple filter test</title>
+		<script type="text/javascript" src="../src/cinejs.js"></script>
+		<script type="text/javascript" src="../src/Player.js"></script>
+		<script type="text/javascript" src="../src/filters/ColourLevel.js"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				var player = new cinejs.Player();
+				player.options.source = document.getElementById("source");
+				player.options.destination = document.getElementById("destination");
+
+				player.filters.push(new cinejs.filters.ColourLevel(0.0, 2.0, 0.0));
+
+				document.getElementById("play").addEventListener("click", function () {
+					player.play();
+					return false;
+				}, false);
+			};
+		</script>
+	</head>
+	<body>
+		<h1>Simple video test</h1>
+
+		<a id="play" href="#">Play!</a>
+
+		<br />
+
+		<canvas id="destination" width="320" height="240" />
+
+		<video id="source" autobuffer="autobuffer" style="display: none">
+			<source src="test.ogv" type="video/ogg" />
+			<source src="test.mp4" type="video/mp4" />
+		</video>
+	</body>
+</html>
