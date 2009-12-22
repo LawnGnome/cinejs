@@ -39,8 +39,9 @@ cinejs.filters.BrightnessContrast = function (brightness, contrast) {
  * The main processing function for the brightness and contrast filter.
  *
  * @param {ImageData} frame
+ * @param {HTMLCanvasElement} canvas
  */
-cinejs.filters.BrightnessContrast.prototype.processFrame = function (frame) {
+cinejs.filters.BrightnessContrast.prototype.processFrame = function (frame, canvas) {
 	for (var i = 0; i < frame.data.length; i += 4) {
 		frame.data[i + 0] = this.processSubpixel(frame.data[i + 0]);
 		frame.data[i + 1] = this.processSubpixel(frame.data[i + 1]);

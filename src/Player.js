@@ -156,7 +156,7 @@ cinejs.Player.prototype.renderFrame = function (video, intermediate, destination
 		// Now apply each filter in turn.
 		for (var filter in this.filters) {
 			if (this.filters.hasOwnProperty(filter)) {
-				this.filters[filter].processFrame(imageData);
+				this.filters[filter].processFrame(imageData, intermediate);
 			}
 		}
 
