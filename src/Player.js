@@ -106,8 +106,8 @@ cinejs.Player.prototype.createIntermediateCanvas = function () {
 	canvas.style.display = "none";
 
 	// Grab the destination size as our intermediate size.
-	canvas.width = this.destination.width;
-	canvas.height = this.destination.height;
+	canvas.width = this.options.destination.width;
+	canvas.height = this.options.destination.height;
 
 	document.body.appendChild(canvas);
 
