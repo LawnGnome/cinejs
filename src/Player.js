@@ -51,8 +51,8 @@ cinejs.Player = function (options) {
  */
 cinejs.Player.prototype.check = function () {
 	// Check for a valid source.
-	if (!this.options.source instanceof HTMLVideoElement) {
-		throw "The source option must be a video element";
+	if (!(this.options.source instanceof HTMLVideoElement || this.options.source instanceof HTMLImageElement)) {
+		throw "The source option must be a video or image element";
 	}
 
 	// Check for a valid destination element.
@@ -121,36 +121,41 @@ cinejs.Player.prototype.play = function () {
 	}
 
 	var self = this;
-	this.options.source.addEventListener("play", function () {
-		self.renderFrame(self.options.source, intermediate, self.options.destination);
-	}, false);
+	if (this.options.source instanceof HTMLVideoElement) {
+		this.options.source.addEventListener("play", function () {
+			self.renderFrame(self.options.source, intermediate, self.options.destination);
+		}, false);
 
-	this.options.source.play();
+		this.options.source.play();
+	}
+	else {
+		self.renderFrame(self.options.source, intermediate, self.options.destination);
+	}
 };
 
 /**
  * Actually renders a frame of the video by rendering it and calling any
  * filters required.
  *
- * @param {HTMLVideoElement} video The source video element.
+ * @param {HTMLImageElement|HTMLVideoElement} source The source video element.
  * @param {HTMLCanvasElement} intermediate An intermediate canvas to be used
  *                                         for filtering and processing.
  * @param {HTMLCanvasElement} destination The destination canvas.
  */
-cinejs.Player.prototype.renderFrame = function (video, intermediate, destination) {
+cinejs.Player.prototype.renderFrame = function (source, intermediate, destination) {
 	if (this.filters.length === 0) {
 		/* Shortcut if we have no filters defined: just splat the data
 		 * straight to the destination. */
 		var context = destination.getContext("2d");
-		context.drawImage(video, 0, 0, destination.width, destination.height);
+		context.drawImage(source, 0, 0, destination.width, destination.height);
 	}
 	else {
 		var intermediateContext = intermediate.getContext("2d");
 		var destinationContext = destination.getContext("2d");
 
-		/* Put the current video frame onto the intermediate canvas so
+		/* Put the current source frame onto the intermediate canvas so
 		 * we can get its raw image data. */
-		intermediateContext.drawImage(video, 0, 0, intermediate.width, intermediate.height);
+		intermediateContext.drawImage(source, 0, 0, intermediate.width, intermediate.height);
 		var imageData = intermediateContext.getImageData(0, 0, intermediate.width, intermediate.height);
 
 		// Now apply each filter in turn.
@@ -166,12 +171,12 @@ cinejs.Player.prototype.renderFrame = function (video, intermediate, destination
 		imageData = null;
 	}
 
-	/* Make sure we're called again after the right delay, unless the video
+	/* Make sure we're called again after the right delay, unless the source
 	 * has already been stopped. */
-	if (!(video.paused || video.ended)) {
+	if (source instanceof HTMLVideoElement && !(source.paused || source.ended)) {
 		var self = this;
 		window.setTimeout(function () {
-			self.renderFrame(video, intermediate, destination);
+			self.renderFrame(source, intermediate, destination);
 		}, this.options.frameDelay);
 	}
 };
