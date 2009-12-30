@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Static image filter test</title>
+		<link rel="stylesheet" type="text/css" href="test.css" />
+		<script type="text/javascript" src="../dist/cine.js"></script>
+		<script type="text/javascript" src="StaticImage.js"></script>
+	</head>
+	<body>
+		<h1>Static image filter test</h1>
+
+		<div id="source-container">
+			<h2>Source</h2>
+
+			<img id="source" width="320" height="240" src="sample.png" />
+		</div>
+
+		<div id="intermediate-container">
+			<h2>Intermediate</h2>
+
+			<canvas id="intermediate" width="320" height="240" />
+		</div>
+
+		<div id="destination-container">
+			<h2>Destination</h2>
+
+			<canvas id="destination" width="320" height="240" />
+		</div>
+
+		<select id="filter">
+			<option>Choose a filter</option>
+			<option value="BrightnessContrast">Brightness/Contrast (0.5, 1.5)</option>
+			<option value="ColourLevel">Colour Level (5, 0, 0) &mdash; Ultra Red</option>
+			<option value="GaussianBlur">Gaussian Blur (radius 4)</option>
+		</select>
+	</body>
+</html>

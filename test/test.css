@@ -28,7 +28,7 @@ div h2 {
 	width: 390px;
 }
 
-div canvas, div video {
+div canvas, div video, div img {
 	display: block;
 	position: absolute;
 	top: 35px;
@@ -58,6 +58,14 @@ div canvas, div video {
 	text-align: right;
 	font-size: 35px;
 	font-weight: bold;
+}
+
+#filter {
+	display: block;
+	position: absolute;
+	top: 15px;
+	width: 400px;
+	left: 845px;
 }
 
 #fps {
