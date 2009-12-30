@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>GaussianBlur filter test</title>
+		<link rel="stylesheet" type="text/css" href="test.css" />
+		<script type="text/javascript" src="../src/cinejs.js"></script>
+		<script type="text/javascript" src="../src/Player.js"></script>
+		<script type="text/javascript" src="../src/filters/GaussianBlur.js"></script>
+		<script type="text/javascript" src="test.js"></script>
+		<script type="text/javascript" src="GaussianBlur.js"></script>
+	</head>
+	<body>
+		<h1>GaussianBlur filter test</h1>
+
+		<div id="source-container">
+			<h2>Source</h2>
+
+			<video id="source" width="320" height="240">
+				<source src="test.ogv" type="video/ogg" />
+				<source src="test.mp4" type="video/mp4" />
+			</video>
+		</div>
+
+		<div id="intermediate-container">
+			<h2>Intermediate</h2>
+
+			<canvas id="intermediate" width="320" height="240" />
+		</div>
+
+		<div id="destination-container">
+			<h2>Destination</h2>
+
+			<canvas id="destination" width="320" height="240" />
+		</div>
+
+		<a id="play" href="#">Play!</a>
+
+		<span id="fps">?? FPS</span>
+	</body>
+</html>
