@@ -20,6 +20,9 @@ window.onload = function () {
 		else if (filter.value == "GaussianBlur") {
 			player.filters = [new cinejs.filters.GaussianBlur(4)];
 		}
+		else {
+			player.filters = [];
+		}
 
 		player.play();
 		return true;
