@@ -40,7 +40,8 @@ cinejs.filters = {};
 /* Elements we use that are defined by HTML5 compliant browsers that JSLint
  * doesn't currently know about. */
 
-/*global HTMLCanvasElement: false, HTMLVideoElement: false, window: false */
+/*global HTMLCanvasElement: false, HTMLImageElement: false, 
+  HTMLVideoElement: false, window: false */
 
 
 // vim: set cin noet ts=8 sw=8:
