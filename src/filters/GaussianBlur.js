@@ -145,7 +145,10 @@ cinejs.filters.GaussianBlur.prototype.calculateKernel = function (radius, sigma)
 	var kernel = [];
 	var i = 0;
 
-	// Calculate one side of the kernel.
+	/* Calculate one side of the kernel. The formula is from Wikipedia
+	 * <http://en.wikipedia.org/wiki/Gaussian_blur>, which sources it on
+	 * back to Shapiro & Stockman's "Computer Vision" book. I choose to
+	 * believe it's correct. */
 	for (i = 0; i <= radius; i++) {
 		kernel.push(Math.pow((1.0 / (sigma * Math.sqrt(2.0 * Math.PI))) * Math.E, -(Math.pow(radius - i, 2) / (2.0 * sigma * sigma))));
 	}
