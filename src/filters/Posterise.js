@@ -38,6 +38,8 @@ cinejs.filters.Posterise = function (levels) {
  */
 cinejs.filters.Posterise.prototype.processFrame = function (frame, canvas) {
 	for (var i = 0; i < frame.data.length; i += 4) {
+		/* We'll use round rather than floor to try to keep the overall
+		 * image brightness roughly the same. */
 		frame.data[i + 0] = this.divisor * Math.round(frame.data[i + 0] / this.divisor);
 		frame.data[i + 1] = this.divisor * Math.round(frame.data[i + 1] / this.divisor);
 		frame.data[i + 2] = this.divisor * Math.round(frame.data[i + 2] / this.divisor);
