@@ -101,7 +101,7 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 				if (frow < 0) {
 					frow = 0;
 				}
-				else if (frow > canvas.height) {
+				else if (frow >= canvas.height) {
 					frow = canvas.height - 1;
 				}
 
