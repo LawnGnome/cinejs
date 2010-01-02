@@ -47,7 +47,7 @@ cinejs.filters.GaussianBlur = function (radius, sigma) {
  */
 cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 	var i = 0;
-	var j = 0;
+	var sourceIndex;
 	var red;
 	var green;
 	var blue;
@@ -67,6 +67,15 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 			for (fi = -this.radius; fi <= this.radius; fi++) {
 				fcol = col + fi;
 
+				/* End of row handling. We'll use the naïve
+				 * approach and just reuse the first or last
+				 * pixel for pixels beyond the first and last
+				 * pixel in the row, respectively. I presume
+				 * this might mean the blur isn't quite as
+				 * blurry at the edges, but it's the easiest
+				 * approach to implement here, and should be
+				 * speedier than any other option we
+				 * realistically have. */
 				if (fcol < 0) {
 					fcol = 0;
 				}
@@ -74,11 +83,11 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 					fcol = canvas.width - 1;
 				}
 
-				j = 4 * (row * canvas.width + fcol);
+				sourceIndex = 4 * (row * canvas.width + fcol);
 
-				red += this.kernel[ki] * frame.data[j + 0];
-				green += this.kernel[ki] * frame.data[j + 1];
-				blue += this.kernel[ki] * frame.data[j + 2];
+				red += this.kernel[ki] * frame.data[sourceIndex + 0];
+				green += this.kernel[ki] * frame.data[sourceIndex + 1];
+				blue += this.kernel[ki] * frame.data[sourceIndex + 2];
 
 				++ki;
 			}
@@ -98,6 +107,10 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 			for (fi = -this.radius; fi <= this.radius; fi++) {
 				frow = row + fi;
 
+				/* Same out-of-bounds handling as in the
+				 * column-wise case, except we check for the
+				 * constraint in a row-wise manner, for fairly
+				 * obvious reasons. */
 				if (frow < 0) {
 					frow = 0;
 				}
@@ -105,11 +118,11 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 					frow = canvas.height - 1;
 				}
 
-				j = 4 * (frow * canvas.width + col);
+				sourceIndex = 4 * (frow * canvas.width + col);
 
-				red += this.kernel[ki] * frame.data[j + 0];
-				green += this.kernel[ki] * frame.data[j + 1];
-				blue += this.kernel[ki] * frame.data[j + 2];
+				red += this.kernel[ki] * frame.data[sourceIndex + 0];
+				green += this.kernel[ki] * frame.data[sourceIndex + 1];
+				blue += this.kernel[ki] * frame.data[sourceIndex + 2];
 
 				++ki;
 			}
