@@ -30,7 +30,7 @@ window.onload = function () {
 		return document.getElementById("intermediate");
 	};
 
-	document.getElementById("filter").addEventListener("change", function (e) {
+	document.getElementById("filter").onchange = function () {
 		var filter = document.getElementById("filter");
 
 		if (filter.value === "BrightnessContrast") {
@@ -57,7 +57,7 @@ window.onload = function () {
 
 		player.play();
 		return true;
-	}, false);
+	};
 };
 
 

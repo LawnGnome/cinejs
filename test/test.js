@@ -50,11 +50,11 @@ cinejs.test = function (filter) {
 
 	player.filters.push(filter);
 
-	document.getElementById("play").addEventListener("click", function () {
+	document.getElementById("play").onclick = function () {
 		frameCount = 0;
 		player.play();
 		return false;
-	}, false);
+	};
 };
 
 
