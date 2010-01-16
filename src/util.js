@@ -38,7 +38,9 @@ cinejs.util = {internal: {}};
  * @param {array} filter A 2D array describing the filter. This is not checked
  *                       at all for speed reasons, so make sure this is a 
  *                       square 2D array before passing it in; preferably upon 
- *                       initial calculation.
+ *                       initial calculation. Things are likely to work better
+ *                       with matrices of odd size: ie 3x3, 5x5, et cetera, but
+ *                       even sized matrices should also sort of work.
  * @param {number} divisor The amount to divide the resultant pixel values by.
  *                         This is typically the sum of the filter elements,
  *                         and can (and should) be pre-calculated.
@@ -46,7 +48,11 @@ cinejs.util = {internal: {}};
  * @return void
  */
 cinejs.util.applyConvolution = function (frame, width, height, filter, divisor, offset) {
+	/* This isn't brilliantly named. It's basically the distance from the
+	 * middle of the convolution matrix to the edge. */
 	var filterSize = Math.floor(filter.length / 2);
+
+	var i = 0;
 
 	/* We have to keep the previous image data around for the entire
 	 * convolution. */
@@ -60,7 +66,7 @@ cinejs.util.applyConvolution = function (frame, width, height, filter, divisor, 
 
 			for (var j = 0; j < filter.length; j++) {
 				var sourceRow = Math.min(Math.max(y + j - filterSize, 0), height - 1);
-				for (var i = 0; i < filter.length; i++) {
+				for (i = 0; i < filter.length; i++) {
 					var sourceCol = Math.min(Math.max(x + i - filterSize, 0), width - 1);
 					var frameIndex = 4 * ((width * sourceRow) + sourceCol);
 
@@ -82,7 +88,7 @@ cinejs.util.applyConvolution = function (frame, width, height, filter, divisor, 
 	}
 
 	// Copy the new image into the ImageData array.
-	for (var i = 0; i < newImage.length; i++) {
+	for (i = 0; i < newImage.length; i++) {
 		frame.data[i] = newImage[i];
 	}
 };
