@@ -83,6 +83,34 @@ var addPosterise = function () {
 };
 
 
+var addSmooth = function () {
+	var weight = new Number(document.getElementById("smooth-weight").value);
+
+	var name = "Smooth: weight " + weight.toString();
+
+	addFilter(name, new cinejs.filters.Smooth(weight));
+
+	hideOverlay();
+	document.getElementById("Smooth-options").reset();
+
+	return false;
+};
+
+
+var addEdgeDetect = function () {
+	addFilter("Edge Detection", new cinejs.filters.EdgeDetect());
+
+	return false;
+};
+
+
+var addEmboss = function () {
+	addFilter("Emboss", new cinejs.filters.Emboss());
+
+	return false;
+};
+
+
 var addGreyscale = function () {
 	addFilter("Greyscale Colours", new cinejs.filters.Greyscale());
 
@@ -216,15 +244,19 @@ window.onload = function () {
 
 	document.getElementById("BrightnessContrast").onclick = function () { showOverlay("BrightnessContrast-options"); return false; };
 	document.getElementById("ColourLevel").onclick = function () { showOverlay("ColourLevel-options"); return false; };
+	document.getElementById("EdgeDetect").onclick = addEdgeDetect;
+	document.getElementById("Emboss").onclick = addEmboss;
 	document.getElementById("GaussianBlur").onclick = function () { showOverlay("GaussianBlur-options"); return false; };
 	document.getElementById("Greyscale").onclick = addGreyscale;
 	document.getElementById("Invert").onclick = addInvert;
 	document.getElementById("Posterise").onclick = function () { showOverlay("Posterise-options"); return false; };
+	document.getElementById("Smooth").onclick = function () { showOverlay("Smooth-options"); return false; };
 
 	document.getElementById("BrightnessContrast-options").onsubmit = addBrightnessContrast;
 	document.getElementById("ColourLevel-options").onsubmit = addColourLevel;
 	document.getElementById("GaussianBlur-options").onsubmit = addGaussianBlur;
 	document.getElementById("Posterise-options").onsubmit = addPosterise;
+	document.getElementById("Smooth-options").onsubmit = addSmooth;
 
 	document.getElementById("play").onclick = onPlay;
 

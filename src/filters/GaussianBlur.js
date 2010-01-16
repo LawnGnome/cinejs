@@ -58,6 +58,11 @@ cinejs.filters.GaussianBlur.prototype.processFrame = function (frame, canvas) {
 	var row;
 	var col;
 
+	/* JFTR: This function predates the existence of
+	 * cinejs.util.applyConvolution(), but I'm going to keep this
+	 * implementation anyway, simply because we're not doing a generic 2D
+	 * convolution; we're doing a pair of 1D convolutions instead. */
+
 	// Column-wise blurring.
 	for (row = 0; row < canvas.height; row++) {
 		for (col = 0; col < canvas.width; col++) {

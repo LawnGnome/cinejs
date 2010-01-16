@@ -36,10 +36,13 @@
 			<ul>
 				<li><a href="#" id="BrightnessContrast">Brightness and Contrast</a></li>
 				<li><a href="#" id="ColourLevel">Colour Level</a></li>
+				<li><a href="#" id="EdgeDetect">Edge Detection</a></li>
+				<li><a href="#" id="Emboss">Emboss</a></li>
 				<li><a href="#" id="GaussianBlur">Gaussian Blur</a></li>
 				<li><a href="#" id="Greyscale">Greyscale</a></li>
 				<li><a href="#" id="Invert">Invert Colours</a></li>
 				<li><a href="#" id="Posterise">Posterise</a></li>
+				<li><a href="#" id="Smooth">Smooth</a></li>
 			</ul>
 		</div>
 
@@ -103,6 +106,15 @@
 		<form id="Posterise-options" class="overlaid">
 			<label for="levels">Output levels:</label>
 			<input type="text" size="5" id="levels" value="4">
+
+			<br>
+
+			<input type="submit" value="Add Filter">
+		</form>
+
+		<form id="Smooth-options" class="overlaid">
+			<label for="smooth-weight">Smoothing weight (&#x2265; 0; 0 is the maximum amount):</label>
+			<input type="text" size="5" id="smooth-weight" value="0.0">
 
 			<br>
 
