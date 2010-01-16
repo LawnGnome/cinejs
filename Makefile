@@ -12,7 +12,7 @@ lint:	dist/cine.js
 dist:
 	test -d dist || mkdir dist
 
-dist/cine.js:	src/cinejs.js src/util.js src/Player.js src/filters/BrightnessContrast.js src/filters/ColourLevel.js src/filters/GaussianBlur.js src/filters/Invert.js src/filters/Posterise.js | dist
+dist/cine.js:	src/cinejs.js src/util.js src/Player.js src/filters/BrightnessContrast.js src/filters/ColourLevel.js src/filters/GaussianBlur.js src/filters/Greyscale.js src/filters/Invert.js src/filters/Posterise.js | dist
 	cat $^ > $@
 
 dist/cine.js.gz:	dist/cine.js
