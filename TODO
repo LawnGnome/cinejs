@@ -8,7 +8,8 @@
   I'll get to that before 0.1.
 
 - There are a tonne more filters that could be implemented. I'd like to start
-  working on some of them, at least.
+  working on some of them, at least. Something that uses HSV might be nice,
+  since I went to the trouble of implementing it and all.
 
 - Part of me does wonder if this could optionally leverage Processing.js
   somehow. I should look into that at some stage.
