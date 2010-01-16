@@ -1,0 +1,17 @@
+- Allow different canvas contexts to be used, rather than locking the developer
+  into 2D. It's sort of there already -- you could certainly build something
+  around WebGL with what's already there -- but we could avoid the getImageData
+  call for performance reasons if we don't care about 2D at the point of
+  filtering.
+
+- There's probably a lack of a really simple example at the moment. Hopefully
+  I'll get to that before 0.1.
+
+- There are a tonne more filters that could be implemented. I'd like to start
+  working on some of them, at least.
+
+- Part of me does wonder if this could optionally leverage Processing.js
+  somehow. I should look into that at some stage.
+
+- Start testing with Opera, should they ever manage to get a browser build out
+  with both <video> and <canvas> support.
