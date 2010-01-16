@@ -20,6 +20,9 @@ window.onload = function () {
 		else if (filter.value == "GaussianBlur") {
 			player.filters = [new cinejs.filters.GaussianBlur(4)];
 		}
+		else if (filter.value == "Invert") {
+			player.filters = [new cinejs.filters.Invert()];
+		}
 		else if (filter.value == "Posterise") {
 			player.filters = [new cinejs.filters.Posterise(4)];
 		}
