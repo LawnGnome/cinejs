@@ -40,7 +40,7 @@ cinejs.filters.GaussianBlur = function (radius, sigma) {
 };
 
 /**
- * The main processing function for the brightness and contrast filter.
+ * The main processing function for the Gaussian blur filter.
  *
  * @param {ImageData} frame
  * @param {HTMLCanvasElement} canvas
