@@ -1,0 +1,84 @@
+CineJS 0.1.0
+http://code.google.com/p/cinejs/
+
+
+	This is how it always ends.
+	A little magic, a little smoke, something floating.
+		- "Reconstruction"
+
+
+I. WHAT IS CINEJS?
+
+CineJS is a Javascript library designed to provide a simple toolbox for
+filtering and manipulating HTML-defined visual content, namely still images and
+HTML5 videos.
+
+
+II. HOW DO I BUILD IT?
+
+If you want to build it yourself, you will need the following:
+
+- GNU Make
+- The usual array of binutils shipped on any *nix in the last 20 years
+- JSMin (optional, but highly recommended)
+
+Simply execute "make" in the top-level directory and a dist directory will
+appear with the standalone distributables.
+
+
+III. WHAT DEPENDENCIES DOES IT HAVE?
+
+None, besides requiring a browser that implements the commonly implemented
+subset of HTML5 as at January 2010. In practice, I test with these browsers:
+
+- Firefox 3.5
+- Safari 4
+- Chrome 3
+
+There are no Javascript library or framework requirements; CineJS is completely
+standalone.
+
+
+IV. ARE THERE EXAMPLES?
+
+Definitely! If you build CineJS, you can point your browser to the test
+directory and look at the various HTML files therein. Alternatively, you can go
+to http://code.google.com/p/cinejs/ to see the same tests in action.
+
+
+V. WHY ON EARTH WOULD YOU WANT TO PROCESS VIDEO IN JAVASCRIPT?
+
+I think my motivation can be summed up broadly as "because you can".
+
+Beyond that, here's where this came from. In 2009, there were a number of demos
+written that took advantage of the various new features available within HTML5,
+particularly around the video and canvas elements and the ways they could
+interact. For me, the stunning moment was the chromakey demo that came out in
+xxx: while it's obviously nothing like a "real" chromakey filter, it showed
+that surprisingly complex effects could be generated in near real time in
+current browsers.
+
+This percolated its way into my subconscious, and returned when I needed to
+produce a visual art installation as part of my film studies. I decided to use
+the Web browser as a way of rapidly developing something, and part of this
+involved some basic filtering of videos. From there, it seemed fairly obvious
+to turn it into a simple library.
+
+
+VI. WHAT ABOUT PROCESSING.JS?
+
+I'm certainly aware of Processing.js, which allows you to perform all sorts of
+really cool visual trickery far above and beyond what this library will let you
+do. I highly recommend it. Still, I felt as though I didn't need that much
+power or complexity for what I was working on at the time, and hence this was
+born.
+
+
+VII. I FOUND A BUG/HAVE A FEATURE REQUEST/WANT TO HAVE YOUR BABIES.
+
+The first two can be handled at the Google Code Web site. The last one can't
+be, but knowing Google, they'll have something in beta for that by the end of
+the year.
+
+
+- Adam Harvey <cinejs@adamharvey.name>
