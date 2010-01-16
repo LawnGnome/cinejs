@@ -1,3 +1,11 @@
+body {
+	font-family: Corbel, Sans-Serif;
+}
+
+h1, h2, #play {
+	font-family: Constantia, Serif;
+}
+
 h1 {
 	position: absolute;
 	margin: 0;
@@ -63,18 +71,46 @@ h2 {
 #filters {
 	position: absolute;
 	margin: 0;
-	padding: 0.2em;
-	top: 3.6em;
+	padding: 1.2em 0 0 0;
+	top: 2.6em;
 	bottom: 50%;
 	right: 0;
 	width: 25%;
 	overflow: auto;
 }
 
+#filters h2, #stack h2 {
+	padding-left: 0.2em;
+}
+
+#filters, #stack {
+	border-left: solid 1px rgb(235, 240, 237);
+}
+
+#filters ul, #stack ul {
+	list-style: none;
+	margin: 1em 0 0 0;
+	padding: 0;
+	border-bottom: solid 1px rgb(235, 240, 237);
+}
+
+#filters li a {
+	display: block;
+}
+
+#filters li, #stack li {
+	padding: 0.1em 0.2em;
+	border-top: solid 1px rgb(235, 240, 237);
+}
+
+#filters li:hover {
+	background: rgb(235, 240, 237);
+}
+
 #stack {
 	position: absolute;
 	margin: 0;
-	padding: 0.2em;
+	padding: 1em 0 0 0;
 	top: 50%;
 	bottom: 0;
 	right: 0;
@@ -82,9 +118,16 @@ h2 {
 	overflow: auto;
 }
 
-#stack li a {
+#stack li .remove {
 	display: block;
 	float: right;
+	text-decoration: none;
+	color: black;
+	padding: 0 0.35em;
+}
+
+#stack li .remove:hover {
+	background: rgb(255, 128, 64);
 }
 
 #overlay {

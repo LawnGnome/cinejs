@@ -99,6 +99,7 @@ var addFilter = function (name, filter) {
 	item.textContent = name;
 
 	var remove = document.createElement("a");
+	remove.className = "remove";
 	remove.href = "#";
 	remove.innerHTML = "&#xd7;";
 	item.appendChild(remove);
