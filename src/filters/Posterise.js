@@ -46,5 +46,8 @@ cinejs.filters.Posterise.prototype.processFrame = function (frame, canvas) {
 	}
 };
 
+// See, Americans, I think of you.
+cinejs.filters.Posterize = cinejs.filters.Posterise;
+
 
 // vim: set cin noet ts=8 sw=8:
