@@ -26,6 +26,9 @@ window.onload = function () {
 		else if (filter.value == "Posterise") {
 			player.filters = [new cinejs.filters.Posterise(4)];
 		}
+		else if (filter.value == "HSV") {
+			player.filters = [new HSVFilter()];
+		}
 		else {
 			player.filters = [];
 		}
