@@ -83,6 +83,13 @@ var addPosterise = function () {
 };
 
 
+var addGreyscale = function () {
+	addFilter("Greyscale Colours", new cinejs.filters.Greyscale());
+
+	return false;
+};
+
+
 var addInvert = function () {
 	addFilter("Invert Colours", new cinejs.filters.Invert());
 
@@ -210,6 +217,7 @@ window.onload = function () {
 	document.getElementById("BrightnessContrast").onclick = function () { showOverlay("BrightnessContrast-options"); return false; };
 	document.getElementById("ColourLevel").onclick = function () { showOverlay("ColourLevel-options"); return false; };
 	document.getElementById("GaussianBlur").onclick = function () { showOverlay("GaussianBlur-options"); return false; };
+	document.getElementById("Greyscale").onclick = addGreyscale;
 	document.getElementById("Invert").onclick = addInvert;
 	document.getElementById("Posterise").onclick = function () { showOverlay("Posterise-options"); return false; };
 
