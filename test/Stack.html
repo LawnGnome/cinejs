@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CineJS filter stack demo</title>
+		<link rel="stylesheet" type="text/css" href="Stack.css" />
+		<script type="text/javascript" src="../dist/cine.js"></script>
+		<script type="text/javascript" src="Stack.js"></script>
+	</head>
+	<body>
+		<h1>CineJS filter stack demo</h1>
+
+		<div id="source-container">
+			<h2>Source</h2>
+
+			<video id="source" width="320" height="240">
+				<source src="test.ogv" type="video/ogg" />
+				<source src="test.mp4" type="video/mp4" />
+			</video>
+		</div>
+
+		<div id="destination-container">
+			<h2>Destination</h2>
+
+			<canvas id="destination" width="320" height="240"></canvas>
+		</div>
+
+		<a id="play" href="#">Play</a>
+
+		<div id="fps-container">
+			FPS: <span id="fps">0.0</span>
+		</div>
+
+		<div id="filters">
+			<h2>Available Filters</h2>
+
+			<ul>
+				<li><a href="#" id="BrightnessContrast">Brightness and Contrast</a></li>
+				<li><a href="#" id="ColourLevel">Colour Level</a></li>
+				<li><a href="#" id="GaussianBlur">Gaussian Blur</a></li>
+				<li><a href="#" id="Invert">Invert Colours</a></li>
+				<li><a href="#" id="Posterise">Posterise</a></li>
+			</ul>
+		</div>
+
+		<div id="stack">
+			<h2>Enabled Filters</h2>
+
+			<ul>
+			</ul>
+		</div>
+
+		<div id="overlay">
+		</div>
+
+		<form id="BrightnessContrast-options" class="overlaid">
+			<label for="brightness">Brightness (from -1 to 1; 0 keeps it the same):</label>
+			<input type="text" size="5" id="brightness" value="0.0">
+			
+			<br>
+
+			<label for="contrast">Contrast (&#x2265; 0; 1 keeps it the same):</label>
+			<input type="text" size="5" id="contrast" value="1.0">
+			
+			<br>
+
+			<input type="submit" value="Add Filter">
+		</form>
+
+		<form id="ColourLevel-options" class="overlaid">
+			<label for="level-red">Red (&#x2265; 0; 1 keeps it the same):</label>
+			<input type="text" size="5" id="level-red" value="1.0">
+			
+			<br>
+
+			<label for="level-green">Green (&#x2265; 0; 1 keeps it the same):</label>
+			<input type="text" size="5" id="level-green" value="1.0">
+			
+			<br>
+
+			<label for="level-blue">Blue (&#x2265; 0; 1 keeps it the same):</label>
+			<input type="text" size="5" id="level-blue" value="1.0">
+			
+			<br>
+
+			<input type="submit" value="Add Filter">
+		</form>
+
+		<form id="GaussianBlur-options" class="overlaid">
+			<label for="radius">Blur radius:</label>
+			<input type="text" size="5" id="radius" value="4">
+			
+			<br>
+
+			<label for="sigma">Sigma for the convolution kernel:</label>
+			<input type="text" size="5" id="sigma" value="0.8">
+
+			<br>
+
+			<input type="submit" value="Add Filter">
+		</form>
+
+		<form id="Posterise-options" class="overlaid">
+			<label for="levels">Output levels:</label>
+			<input type="text" size="5" id="levels" value="4">
+
+			<br>
+
+			<input type="submit" value="Add Filter">
+		</form>
+	</body>
+</html>

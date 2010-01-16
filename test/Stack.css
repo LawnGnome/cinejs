@@ -1,0 +1,116 @@
+h1 {
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	font-size: 2em;
+	font-weight: bold;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1.2em;
+	background: rgb(235, 240, 237);
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+}
+
+#source-container {
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	top: 3.6em;
+	left: 0.4em;
+	width: 320px;
+	background: rgb(200, 206, 203);
+	text-align: center;
+}
+
+#destination-container {
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	top: 3.6em;
+	left: 350px;
+	width: 320px;
+	background: rgb(200, 206, 203);
+	text-align: center;
+}
+
+#fps-container {
+	position: absolute;
+	top: 0;
+	left: 30%;
+	right: 30%;
+	text-align: center;
+	line-height: 3.2em;
+	vertical-align: middle;
+	height: 3.2em;
+}
+
+#play {
+	display: block;
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	font-size: 2em;
+	font-weight: bold;
+	top: 0;
+	right: 0;
+}
+
+#filters {
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	top: 3.6em;
+	bottom: 50%;
+	right: 0;
+	width: 25%;
+	overflow: auto;
+}
+
+#stack {
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	top: 50%;
+	bottom: 0;
+	right: 0;
+	width: 25%;
+	overflow: auto;
+}
+
+#stack li a {
+	display: block;
+	float: right;
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: black;
+	opacity: 0.8;
+	display: none;
+}
+
+.overlaid {
+	display: block;
+	position: absolute;
+	margin: 0;
+	padding: 0.2em;
+	border: solid 5px black;
+	top: 30%;
+	left: 30%;
+	right: 30%;
+	bottom: 30%;
+	background: white;
+	overflow: auto;
+	display: none;
+}
+
+/* vim: set ai nocin noet ts=8 sw=8: */
