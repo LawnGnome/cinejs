@@ -27,6 +27,68 @@ cinejs.util = {internal: {}};
 
 
 /**
+ * Apply an arbitrarily sized convolution filter.
+ *
+ * This is (a very loose) port of the libgd gdImageConvolution() function as
+ * written by Pierre Joye.
+ *
+ * @param {ImageData} frame The image data to filter.
+ * @param {number} width The width of the image data.
+ * @param {number} height The height of the image data.
+ * @param {array} filter A 2D array describing the filter. This is not checked
+ *                       at all for speed reasons, so make sure this is a 
+ *                       square 2D array before passing it in; preferably upon 
+ *                       initial calculation.
+ * @param {number} divisor The amount to divide the resultant pixel values by.
+ *                         This is typically the sum of the filter elements,
+ *                         and can (and should) be pre-calculated.
+ * @param {number} offset An offset to apply to the resulting subpixel values.
+ * @return void
+ */
+cinejs.util.applyConvolution = function (frame, width, height, filter, divisor, offset) {
+	var filterSize = Math.floor(filter.length / 2);
+
+	/* We have to keep the previous image data around for the entire
+	 * convolution. */
+	var newImage = [];
+
+	for (var y = 0; y < height; y++) {
+		for (var x = 0; x < width; x++) {
+			var red = 0;
+			var green = 0;
+			var blue = 0;
+
+			for (var j = 0; j < filter.length; j++) {
+				var sourceRow = Math.min(Math.max(y + j - filterSize, 0), height - 1);
+				for (var i = 0; i < filter.length; i++) {
+					var sourceCol = Math.min(Math.max(x + i - filterSize, 0), width - 1);
+					var frameIndex = 4 * ((width * sourceRow) + sourceCol);
+
+					red += filter[j][i] * frame.data[frameIndex + 0];
+					green += filter[j][i] * frame.data[frameIndex + 1];
+					blue += filter[j][i] * frame.data[frameIndex + 2];
+				}
+			}
+
+			red /= divisor;
+			green /= divisor;
+			blue /= divisor;
+
+			newImage.push(Math.min(Math.max(0, red + offset), 255));
+			newImage.push(Math.min(Math.max(0, green + offset), 255));
+			newImage.push(Math.min(Math.max(0, blue + offset), 255));
+			newImage.push(255);
+		}
+	}
+
+	// Copy the new image into the ImageData array.
+	for (var i = 0; i < newImage.length; i++) {
+		frame.data[i] = newImage[i];
+	}
+};
+
+
+/**
  * Converts a HSV colour value to RGB.
  *
  * @param {number} hue The hue in degrees. Expected to be in the range 0-360,
