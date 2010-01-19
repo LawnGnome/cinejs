@@ -4,9 +4,6 @@
   call for performance reasons if we don't care about 2D at the point of
   filtering.
 
-- There's probably a lack of a really simple example at the moment. Hopefully
-  I'll get to that before 0.1.
-
 - There are a tonne more filters that could be implemented. I'd like to start
   working on some of them, at least. Something that uses HSV might be nice,
   since I went to the trouble of implementing it and all.
