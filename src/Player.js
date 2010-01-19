@@ -65,6 +65,14 @@ cinejs.Player.prototype.check = function () {
 		throw "The frame delay must be a non-negative number";
 	}
 
+	/* Temporary WebKit bug workaround: because WebKit only correctly
+	 * implements the first version of the context.drawImage() API, which
+	 * is the least useful one. (Of course.) This means we can't alter
+	 * image dimensions from the source to the destination. */
+	if (this.options.source.width != this.options.destination.width || this.options.source.height != this.options.destination.height) {
+		throw "The source and destination dimensions must be specified and identical";
+	}
+
 	// Check any and all defined filters.
 	for (var i in this.filters) {
 		if (this.filters.hasOwnProperty(i)) {
@@ -98,8 +106,8 @@ cinejs.Player.prototype.createIntermediateCanvas = function () {
 	canvas.style.display = "none";
 
 	// Grab the destination size as our intermediate size.
-	canvas.width = this.options.destination.width;
-	canvas.height = this.options.destination.height;
+	canvas.width = this.options.source.width;
+	canvas.height = this.options.source.height;
 
 	document.body.appendChild(canvas);
 
@@ -155,7 +163,7 @@ cinejs.Player.prototype.renderFrame = function (source, intermediate, destinatio
 
 		/* Put the current source frame onto the intermediate canvas so
 		 * we can get its raw image data. */
-		intermediateContext.drawImage(source, 0, 0, intermediate.width, intermediate.height);
+		intermediateContext.drawImage(source, 0, 0);
 		var imageData = intermediateContext.getImageData(0, 0, intermediate.width, intermediate.height);
 
 		// Now apply each filter in turn.
