@@ -1,2 +1,6 @@
+CineJS 0.1.1 ("")
+- Add a workaround for a WebKit bug; the source and destination elements must
+  now be identical in size.
+
 CineJS 0.1.0 ("Something floating"; released 2010-01-18)
 - First release.
