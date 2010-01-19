@@ -1,4 +1,4 @@
-CineJS 0.1.1 ("")
+CineJS 0.1.1 (released 2010-01-19)
 - Add a workaround for a WebKit bug; the source and destination elements must
   now be identical in size.
 

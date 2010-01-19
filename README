@@ -1,4 +1,4 @@
-CineJS 0.1.0
+CineJS 0.1.1
 http://code.google.com/p/cinejs/
 
 
@@ -33,7 +33,7 @@ subset of HTML5 as at January 2010. In practice, I test with these browsers:
 
 - Firefox 3.5
 - Safari 4
-- Chrome 3
+- Chrome 4
 
 There are no Javascript library or framework requirements; CineJS is completely
 standalone.
@@ -41,9 +41,11 @@ standalone.
 
 IV. ARE THERE EXAMPLES?
 
-Definitely! If you build CineJS, you can point your browser to the test
-directory and look at the various HTML files therein. Alternatively, you can go
-to http://code.google.com/p/cinejs/ to see the same tests in action.
+Definitely! An example file to pull apart is available at http://xxx/
+
+If you build CineJS, you can point your browser to the test directory and look
+at the various HTML files therein. Alternatively, you can go to
+http://code.google.com/p/cinejs/ to see the same tests in action.
 
 
 V. WHY ON EARTH WOULD YOU WANT TO PROCESS VIDEO IN JAVASCRIPT?
