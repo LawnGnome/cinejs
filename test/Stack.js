@@ -210,7 +210,9 @@ var onPlay = function () {
 	}
 	else {
 		play.textContent = "Play";
-		player = createPlayer();
+		if (!player) {
+			player = createPlayer();
+		}
 		source.pause();
 		source.position = 0;
 	}
