@@ -1,5 +1,5 @@
-CineJS 0.1.1
-http://code.google.com/p/cinejs/
+CineJS 0.1.2
+http://www.cinejs.com/
 
 
 	This is how it always ends.
@@ -46,7 +46,7 @@ http://www.cinejs.com/example/.
 
 If you build CineJS, you can point your browser to the test directory and look
 at the various HTML files therein. Alternatively, you can go to
-http://code.google.com/p/cinejs/ to see the same tests in action.
+http://www.cinejs.com/test/ to see the same tests in action.
 
 
 V. WHY ON EARTH WOULD YOU WANT TO PROCESS VIDEO IN JAVASCRIPT?
@@ -77,11 +77,20 @@ power or complexity for what I was working on at the time, and hence this was
 born.
 
 
-VII. I FOUND A BUG/HAVE A FEATURE REQUEST/WANT TO HAVE YOUR BABIES.
+VII. WHAT ABOUT WEBGL?
 
-The first two can be handled at the Google Code Web site. The last one can't
-be, but knowing Google, they'll have something in beta for that by the end of
-the year.
+WebGL is awesome, and should be extremely useful for CineJS moving forward. At
+present, there aren't any filters that use it, but I'm definitely keen to write
+some when I have time. (I'd also very gladly accept donations of code doing
+just that.)
+
+
+VIII. I FOUND A BUG/HAVE A FEATURE REQUEST/WANT TO HAVE YOUR BABIES.
+
+The first two can be handled at the Google Code Web site. (For now. I'll
+probably end up just moving everything to GitHub soon enough.) The last one
+can't be, but knowing Google, they'll have something in beta for that by the
+end of the year.
 
 
 - Adam Harvey <cinejs@adamharvey.name>
