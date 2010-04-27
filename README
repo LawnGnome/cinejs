@@ -41,7 +41,8 @@ standalone.
 
 IV. ARE THERE EXAMPLES?
 
-Definitely! An example file to pull apart is available at http://xxx/
+Definitely! An example file to pull apart is available at
+http://www.cinejs.com/example/.
 
 If you build CineJS, you can point your browser to the test directory and look
 at the various HTML files therein. Alternatively, you can go to
